@@ -79,49 +79,52 @@ const Index = () => {
           <TransponderAllocation />
         </div>
 
-        <TabsContent value="today" className="mt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <div className="lg:col-span-2">
-              <TerminalStatus />
+        {/* Wrap all TabsContent components inside a single Tabs component */}
+        <Tabs defaultValue={timeRange} value={timeRange} onValueChange={setTimeRange}>
+          <TabsContent value="today" className="mt-0">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+              <div className="lg:col-span-2">
+                <TerminalStatus />
+              </div>
+              <div>
+                <DataUploadCard />
+              </div>
             </div>
-            <div>
-              <DataUploadCard />
+          </TabsContent>
+          
+          <TabsContent value="week" className="mt-0">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+              <div className="lg:col-span-2">
+                <TerminalStatus timeRange="week" />
+              </div>
+              <div>
+                <DataUploadCard />
+              </div>
             </div>
-          </div>
-        </TabsContent>
-        
-        <TabsContent value="week" className="mt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <div className="lg:col-span-2">
-              <TerminalStatus timeRange="week" />
+          </TabsContent>
+          
+          <TabsContent value="month" className="mt-0">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+              <div className="lg:col-span-2">
+                <TerminalStatus timeRange="month" />
+              </div>
+              <div>
+                <DataUploadCard />
+              </div>
             </div>
-            <div>
-              <DataUploadCard />
+          </TabsContent>
+          
+          <TabsContent value="quarter" className="mt-0">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+              <div className="lg:col-span-2">
+                <TerminalStatus timeRange="quarter" />
+              </div>
+              <div>
+                <DataUploadCard />
+              </div>
             </div>
-          </div>
-        </TabsContent>
-        
-        <TabsContent value="month" className="mt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <div className="lg:col-span-2">
-              <TerminalStatus timeRange="month" />
-            </div>
-            <div>
-              <DataUploadCard />
-            </div>
-          </div>
-        </TabsContent>
-        
-        <TabsContent value="quarter" className="mt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <div className="lg:col-span-2">
-              <TerminalStatus timeRange="quarter" />
-            </div>
-            <div>
-              <DataUploadCard />
-            </div>
-          </div>
-        </TabsContent>
+          </TabsContent>
+        </Tabs>
       </main>
     </div>
   );
